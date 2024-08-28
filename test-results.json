@@ -1,0 +1,360 @@
+{
+  "config": {
+    "configFile": "D:\\QAWolf\\qa_wolf_take_home\\playwright.config.ts",
+    "rootDir": "D:/QAWolf/qa_wolf_take_home/src/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "D:/QAWolf/qa_wolf_take_home/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {},
+        "id": "Chromium",
+        "name": "Chromium",
+        "testDir": "D:/QAWolf/qa_wolf_take_home/src/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/QAWolf/qa_wolf_take_home/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {},
+        "id": "Firefox",
+        "name": "Firefox",
+        "testDir": "D:/QAWolf/qa_wolf_take_home/src/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "D:/QAWolf/qa_wolf_take_home/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {},
+        "id": "WebKit",
+        "name": "WebKit",
+        "testDir": "D:/QAWolf/qa_wolf_take_home/src/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.46.0",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "hackerNews.test.ts",
+      "file": "hackerNews.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Hacker News Article Sorting",
+          "file": "hackerNews.test.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should verify articles are sorted by newest first",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Chromium",
+                  "projectName": "Chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 2525,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Collected 30 articles so far. Clicking \"More\" to load more articles...\n"
+                        },
+                        {
+                          "text": "Collected 60 articles so far. Clicking \"More\" to load more articles...\n"
+                        },
+                        {
+                          "text": "Collected 90 articles so far. Clicking \"More\" to load more articles...\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-08-16T01:33:42.925Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b756f243b11b578b5a6c-cb4dd0822c0c7cbcda13",
+              "file": "hackerNews.test.ts",
+              "line": 5,
+              "column": 7
+            },
+            {
+              "title": "should verify articles are sorted by newest first",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Firefox",
+                  "projectName": "Firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "status": "timedOut",
+                      "duration": 60024,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "D:\\QAWolf\\qa_wolf_take_home\\src\\pages\\HackerNewsPage.ts",
+                            "column": 31,
+                            "line": 112
+                          },
+                          "message": "Error: page.isVisible: Target page, context or browser has been closed\n\n\u001b[90m   at \u001b[39m..\\pages\\HackerNewsPage.ts:112\n\n\u001b[0m \u001b[90m 110 |\u001b[39m             \u001b[90m// If we hit the rate limit, use exponential backoff\u001b[39m\n \u001b[90m 111 |\u001b[39m             \u001b[36mif\u001b[39m (\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 112 |\u001b[39m               \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39misVisible(\n \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 113 |\u001b[39m                 \u001b[32m\"text=Sorry, we're not able to serve your requests this quickly.\"\u001b[39m\n \u001b[90m 114 |\u001b[39m               )\n \u001b[90m 115 |\u001b[39m             ) {\u001b[0m\n\n\u001b[2m    at HackerNewsPage.scrapeArticles (D:\\QAWolf\\qa_wolf_take_home\\src\\pages\\HackerNewsPage.ts:112:31)\u001b[22m\n\u001b[2m    at D:\\QAWolf\\qa_wolf_take_home\\src\\tests\\hackerNews.test.ts:10:22\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Collected 30 articles so far. Clicking \"More\" to load more articles...\n"
+                        },
+                        {
+                          "text": "Collected 60 articles so far. Clicking \"More\" to load more articles...\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-08-16T01:33:42.941Z",
+                      "attachments": []
+                    },
+                    {
+                      "workerIndex": 3,
+                      "status": "passed",
+                      "duration": 4231,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Collected 30 articles so far. Clicking \"More\" to load more articles...\n"
+                        },
+                        {
+                          "text": "Collected 60 articles so far. Clicking \"More\" to load more articles...\n"
+                        },
+                        {
+                          "text": "Collected 90 articles so far. Clicking \"More\" to load more articles...\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2024-08-16T01:34:45.206Z",
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\QAWolf\\qa_wolf_take_home\\test-results\\hackerNews-Hacker-News-Art-184be--are-sorted-by-newest-first-Firefox-retry1\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "flaky"
+                }
+              ],
+              "id": "b756f243b11b578b5a6c-1e9600f612823bad7f5a",
+              "file": "hackerNews.test.ts",
+              "line": 5,
+              "column": 7
+            },
+            {
+              "title": "should verify articles are sorted by newest first",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "WebKit",
+                  "projectName": "WebKit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "status": "timedOut",
+                      "duration": 60019,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "D:\\QAWolf\\qa_wolf_take_home\\src\\pages\\HackerNewsPage.ts",
+                            "column": 31,
+                            "line": 112
+                          },
+                          "message": "Error: page.isVisible: Target page, context or browser has been closed\n\n\u001b[90m   at \u001b[39m..\\pages\\HackerNewsPage.ts:112\n\n\u001b[0m \u001b[90m 110 |\u001b[39m             \u001b[90m// If we hit the rate limit, use exponential backoff\u001b[39m\n \u001b[90m 111 |\u001b[39m             \u001b[36mif\u001b[39m (\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 112 |\u001b[39m               \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39misVisible(\n \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 113 |\u001b[39m                 \u001b[32m\"text=Sorry, we're not able to serve your requests this quickly.\"\u001b[39m\n \u001b[90m 114 |\u001b[39m               )\n \u001b[90m 115 |\u001b[39m             ) {\u001b[0m\n\n\u001b[2m    at HackerNewsPage.scrapeArticles (D:\\QAWolf\\qa_wolf_take_home\\src\\pages\\HackerNewsPage.ts:112:31)\u001b[22m\n\u001b[2m    at D:\\QAWolf\\qa_wolf_take_home\\src\\tests\\hackerNews.test.ts:10:22\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Collected 30 articles so far. Clicking \"More\" to load more articles...\n"
+                        },
+                        {
+                          "text": "Collected 60 articles so far. Clicking \"More\" to load more articles...\n"
+                        },
+                        {
+                          "text": "Collected 90 articles so far. Clicking \"More\" to load more articles...\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-08-16T01:33:46.534Z",
+                      "attachments": []
+                    },
+                    {
+                      "workerIndex": 4,
+                      "status": "timedOut",
+                      "duration": 60078,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "D:\\QAWolf\\qa_wolf_take_home\\src\\pages\\HackerNewsPage.ts",
+                            "column": 31,
+                            "line": 112
+                          },
+                          "message": "Error: page.isVisible: Target page, context or browser has been closed\n\n\u001b[90m   at \u001b[39m..\\pages\\HackerNewsPage.ts:112\n\n\u001b[0m \u001b[90m 110 |\u001b[39m             \u001b[90m// If we hit the rate limit, use exponential backoff\u001b[39m\n \u001b[90m 111 |\u001b[39m             \u001b[36mif\u001b[39m (\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 112 |\u001b[39m               \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39misVisible(\n \u001b[90m     |\u001b[39m                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 113 |\u001b[39m                 \u001b[32m\"text=Sorry, we're not able to serve your requests this quickly.\"\u001b[39m\n \u001b[90m 114 |\u001b[39m               )\n \u001b[90m 115 |\u001b[39m             ) {\u001b[0m\n\n\u001b[2m    at HackerNewsPage.scrapeArticles (D:\\QAWolf\\qa_wolf_take_home\\src\\pages\\HackerNewsPage.ts:112:31)\u001b[22m\n\u001b[2m    at D:\\QAWolf\\qa_wolf_take_home\\src\\tests\\hackerNews.test.ts:10:22\u001b[22m"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Collected 30 articles so far. Clicking \"More\" to load more articles...\n"
+                        },
+                        {
+                          "text": "Collected 60 articles so far. Clicking \"More\" to load more articles...\n"
+                        },
+                        {
+                          "text": "Collected 90 articles so far. Clicking \"More\" to load more articles...\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2024-08-16T01:34:47.610Z",
+                      "attachments": [
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "D:\\QAWolf\\qa_wolf_take_home\\test-results\\hackerNews-Hacker-News-Art-184be--are-sorted-by-newest-first-WebKit-retry1\\trace.zip"
+                        }
+                      ]
+                    },
+                    {
+                      "workerIndex": 5,
+                      "status": "passed",
+                      "duration": 3194,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Collected 30 articles so far. Clicking \"More\" to load more articles...\n"
+                        },
+                        {
+                          "text": "Collected 60 articles so far. Clicking \"More\" to load more articles...\n"
+                        },
+                        {
+                          "text": "Collected 90 articles so far. Clicking \"More\" to load more articles...\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 2,
+                      "startTime": "2024-08-16T01:35:48.589Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "flaky"
+                }
+              ],
+              "id": "b756f243b11b578b5a6c-edca2e45c811640a8eeb",
+              "file": "hackerNews.test.ts",
+              "line": 5,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2024-08-16T01:33:42.150Z",
+    "duration": 129762.63699999999,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 2
+  }
+}
