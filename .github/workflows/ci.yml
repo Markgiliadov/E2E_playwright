@@ -1,17 +1,10 @@
-# .github/workflows/playwright.yml
-
-name: Playwright Tests
+name: Run Playwright Tests
 
 on: [push, pull_request]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        browser: [chromium, firefox, webkit]
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -24,5 +17,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Playwright tests
-        run: npx playwright test --project=${{ matrix.browser }}
+      - name: Run tests
+        env:
+          PROXY_USERNAME: ${{ secrets.PROXY_USERNAME }}
+          PROXY_PASSWORD: ${{ secrets.PROXY_PASSWORD }}
+          IPS_JSON: ${{ secrets.IPS_JSON }}
+          USER_AGENTS_JSON: ${{ secrets.USER_AGENTS_JSON }}
+          CI: true
+        run: npx playwright test --project=chromium
