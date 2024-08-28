@@ -12,15 +12,17 @@ type ProxyConfig = {
 type UserAgentConfig = string;
 
 export const getConfig = () => {
-  const isCI = process.env.CI === "true"; // Check if running in CI/CD environment
+  const isCI = process.env.CI === "true"; // Detect CI environment
 
   let proxies: ProxyConfig[] = [];
   let userAgents: UserAgentConfig[] = [];
 
   if (isCI) {
+    // Load from environment variables in CI/CD
     proxies = JSON.parse(process.env.IPS_JSON || "[]");
     userAgents = JSON.parse(process.env.USER_AGENTS_JSON || "[]");
   } else {
+    // Load from files locally
     const ipsPath = path.resolve(__dirname, "ips.json");
     const userAgentsPath = path.resolve(__dirname, "userAgents.json");
 
