@@ -11,8 +11,6 @@ type ProxyConfig = {
 
 type UserAgentConfig = string;
 
-dotenv.config();
-
 export const getConfig = () => {
   const isCI = process.env.CI === "true"; // Check if running in CI/CD environment
 

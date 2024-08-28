@@ -14,7 +14,7 @@ class IPManager {
     }
   }
 
-  getIP() {
+  getIP(): { server: string; ip: string } | null {
     const currentTime = Date.now();
     this.cooldownIPs = this.cooldownIPs.filter((ip) => {
       if (currentTime >= ip.releaseTime) {
@@ -32,15 +32,19 @@ class IPManager {
     }
 
     const selectedIP = this.availableIPs.pop();
+    if (!selectedIP) {
+      return null;
+    }
+
     this.cooldownIPs.push({
-      server: selectedIP!.server,
-      ip: selectedIP!.ip,
+      server: selectedIP.server,
+      ip: selectedIP.ip,
       releaseTime: currentTime + this.cooldownDuration,
     });
 
     console.log(`Selected IP: ${selectedIP?.ip}`);
     console.log(`Remaining IPs: ${this.availableIPs.length}`);
-    return selectedIP!;
+    return selectedIP;
   }
 }
 
