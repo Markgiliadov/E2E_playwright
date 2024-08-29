@@ -46,8 +46,8 @@ config/
 ## Setup Instructions
 
 1. **Clone the repository**:
-   git clone https://github.com/yourusername/qa-wolf-e2e-playwright.git
-   cd qa-wolf-e2e-playwright
+   git clone https://github.com/Markgiliadov/E2E_playwright.git
+   cd E2E_playwright
 
 2. **Install dependencies**:
    npm install
