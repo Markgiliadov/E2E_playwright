@@ -5,6 +5,9 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chromium, firefox, webkit]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -24,4 +27,11 @@ jobs:
           IPS_JSON: ${{ secrets.IPS_JSON }}
           USER_AGENTS_JSON: ${{ secrets.USER_AGENTS_JSON }}
           CI: true
-        run: npx playwright test --project=chromium
+        run: npx playwright test --project=${{ matrix.browser }}
+
+      - name: Upload Playwright Test Artifacts
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: playwright-report
+          path: playwright-report
