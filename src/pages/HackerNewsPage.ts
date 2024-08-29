@@ -6,7 +6,7 @@ import {
   webkit,
 } from "@playwright/test";
 import { ipManager } from "../utils/IPManager";
-import { getConfig } from "../config/config"; // Adjusted import path as per your project structure
+import { getConfig } from "../config/config";
 import { logger } from "../utils/logger";
 
 export class HackerNewsPage {
@@ -16,7 +16,7 @@ export class HackerNewsPage {
   private moreButtonSelector = "a.morelink";
   private rateLimitSelector = "a[href='javascript:window.location.reload();']";
   private ageSelector = "span.age";
-  private config = getConfig(); // This config will now be used in non-static methods
+  private config = getConfig();
 
   constructor(
     page: Page,
@@ -41,7 +41,7 @@ export class HackerNewsPage {
   static async createBrowserWithNewIP(
     browserType: "chromium" | "firefox" | "webkit"
   ) {
-    const config = getConfig(); // Fetch config in the static method
+    const config = getConfig();
     const randomProxy = ipManager.getIP();
     if (!randomProxy) {
       throw new Error("No available proxies. All are in cooldown.");
@@ -51,12 +51,11 @@ export class HackerNewsPage {
       `Using IP: ${randomProxy.ip} through proxy server: ${randomProxy.server}`
     );
 
-    logger.info("HERE:!" + JSON.stringify(config.proxyCredentials));
     const launchOptions = {
       proxy: {
         server: randomProxy.server,
-        username: config.proxyCredentials.username, // Use config here
-        password: config.proxyCredentials.password, // Use config here
+        username: config.proxyCredentials.username,
+        password: config.proxyCredentials.password,
       },
     };
 
@@ -166,7 +165,6 @@ export class HackerNewsPage {
           );
           this.page = page;
           this.context = context;
-
           await this.navigate(currentUrl);
           retries = 0;
         }
