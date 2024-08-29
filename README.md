@@ -15,6 +15,7 @@ This project is an end-to-end (E2E) testing suite built using Playwright. It is 
 
 ## Project Structure
 
+s
 ├── .github/
 │ └── workflows/
 │ └── playwright.yml # GitHub Actions workflow for CI/CD
