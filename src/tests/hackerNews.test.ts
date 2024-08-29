@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { HackerNewsPage } from "../pages/HackerNewsPage";
+import dotenv from "dotenv";
+dotenv.config();
 
 async function setupPageWithProxy(
   browserType: "chromium" | "firefox" | "webkit",

@@ -5,6 +5,10 @@ interface Config {
   proxies: { server: string; ip: string }[];
   userAgents: string[];
   cooldownDuration: number;
+  proxyCredentials: { username: string; password: string };
+  rotationThreshold: number;
+  maxRetries: number;
+  loggerLevel: string;
 }
 
 export function getConfig(): Config {
@@ -14,16 +18,13 @@ export function getConfig(): Config {
 
   // Fallback to files if environment variables are not set
   if (proxies.length === 0) {
-    const ipsFilePath = path.resolve(__dirname, "config/ips.json");
+    const ipsFilePath = path.resolve(__dirname, "./ips.json");
     const ipsFile = fs.readFileSync(ipsFilePath, "utf-8");
     proxies.push(...JSON.parse(ipsFile).proxies);
   }
 
   if (userAgents.length === 0) {
-    const userAgentsFilePath = path.resolve(
-      __dirname,
-      "config/userAgents.json"
-    );
+    const userAgentsFilePath = path.resolve(__dirname, "./userAgents.json");
     const userAgentsFile = fs.readFileSync(userAgentsFilePath, "utf-8");
     userAgents.push(...JSON.parse(userAgentsFile).userAgents);
   }
@@ -32,5 +33,12 @@ export function getConfig(): Config {
     proxies,
     userAgents,
     cooldownDuration: Number(process.env.COOLDOWN_DURATION) || 30000,
+    proxyCredentials: {
+      username: process.env.PROXY_USERNAME || "",
+      password: process.env.PROXY_PASSWORD || "",
+    },
+    rotationThreshold: Number(process.env.ROTATION_THRESHOLD) || 5,
+    maxRetries: Number(process.env.MAX_RETRIES) || 3,
+    loggerLevel: process.env.LOG_LEVEL || "info",
   };
 }

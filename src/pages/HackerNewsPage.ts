@@ -51,6 +51,7 @@ export class HackerNewsPage {
       `Using IP: ${randomProxy.ip} through proxy server: ${randomProxy.server}`
     );
 
+    logger.info("HERE:!" + JSON.stringify(config.proxyCredentials));
     const launchOptions = {
       proxy: {
         server: randomProxy.server,
