@@ -15,7 +15,6 @@ This project is an end-to-end (E2E) testing suite built using Playwright. It is 
 
 ## Project Structure
 
-\`\`\`plaintext
 ├── .github/
 │ └── workflows/
 │ └── playwright.yml # GitHub Actions workflow for CI/CD
@@ -35,26 +34,20 @@ This project is an end-to-end (E2E) testing suite built using Playwright. It is 
 ├── package.json # Project dependencies and scripts
 ├── playwright.config.ts # Playwright configuration
 └── tsconfig.json # TypeScript configuration
-\`\`\`
 
 ## Setup Instructions
 
 1. **Clone the repository**:
-   \`\`\`bash
    git clone https://github.com/yourusername/qa-wolf-e2e-playwright.git
    cd qa-wolf-e2e-playwright
-   \`\`\`
 
 2. **Install dependencies**:
-   \`\`\`bash
    npm install
-   \`\`\`
 
 3. **Create configuration files**:
    In the \`./src/config/\` directory, create two files: \`ips.json\` and \`userAgents.json\`.
 
    **ips.json**:
-   \`\`\`json
    {
    "proxies": [
    { "server": "your_proxy_server_1", "ip": "your_ip_1" },
@@ -62,10 +55,8 @@ This project is an end-to-end (E2E) testing suite built using Playwright. It is 
    ...
    ]
    }
-   \`\`\`
 
    **userAgents.json**:
-   \`\`\`json
    {
    "userAgents": [
    "User-Agent String 1",
@@ -73,12 +64,9 @@ This project is an end-to-end (E2E) testing suite built using Playwright. It is 
    ...
    ]
    }
-   \`\`\`
 
 4. **Run the tests**:
-   \`\`\`bash
    npx playwright test
-   \`\`\`
 
 5. **View the reports**:
    After running the tests, reports and traces will be generated in the \`test-results/\` directory.
