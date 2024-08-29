@@ -16,29 +16,32 @@ This project is an end-to-end (E2E) testing suite built using Playwright. It is 
 ## Project Structure
 
 .github/
-└── workflows/
-└── playwright.yml # GitHub Actions workflow for CI/CD
+workflows/ - playwright.yml # GitHub Actions workflow for CI/CD
 
 pages/
-└── HackerNewsPage.ts # Page Object Model for Hacker News
+
+- HackerNewsPage.ts # Page Object Model for Hacker News
 
 tests/
-└── hackerNews.test.ts # Test suite for Hacker News article sorting
+
+- hackerNews.test.ts # Test suite for Hacker News article sorting
 
 utils/
-├── IPManager.ts # Utility for managing proxy IPs
-├── logger.ts # Logger configuration
-└── config.ts # Configuration management
+
+- IPManager.ts # Utility for managing proxy IPs
+- logger.ts # Logger configuration
+- config.ts # Configuration management
 
 config/
-├── ips.json # Proxy IP configuration file
-└── userAgents.json # User-Agent strings configuration file
 
-.gitignore # Git ignored files
-README.md # Project documentation
-package.json # Project dependencies and scripts
-playwright.config.ts # Playwright configuration
-tsconfig.json # TypeScript configuration
+- ips.json # Proxy IP configuration file
+- userAgents.json # User-Agent strings configuration file
+
+- .gitignore # Git ignored files
+- README.md # Project documentation
+- package.json # Project dependencies and scripts
+- playwright.config.ts # Playwright configuration
+- tsconfig.json # TypeScript configuration
 
 ## Setup Instructions
 
