@@ -1,47 +1,36 @@
 import fs from "fs";
 import path from "path";
-import dotenv from "dotenv";
 
-dotenv.config();
+interface Config {
+  proxies: { server: string; ip: string }[];
+  userAgents: string[];
+  cooldownDuration: number;
+}
 
-type ProxyConfig = {
-  server: string;
-  ip: string;
-};
+export function getConfig(): Config {
+  // Attempt to parse the proxies and user agents from environment variables
+  const proxies = JSON.parse(process.env.IPS_JSON || "[]");
+  const userAgents = JSON.parse(process.env.USER_AGENTS_JSON || "[]");
 
-type UserAgentConfig = string;
+  // Fallback to files if environment variables are not set
+  if (proxies.length === 0) {
+    const ipsFilePath = path.resolve(__dirname, "config/ips.json");
+    const ipsFile = fs.readFileSync(ipsFilePath, "utf-8");
+    proxies.push(...JSON.parse(ipsFile).proxies);
+  }
 
-export const getConfig = () => {
-  const isCI = process.env.CI === "true"; // Detect CI environment
-
-  let proxies: ProxyConfig[] = [];
-  let userAgents: UserAgentConfig[] = [];
-
-  if (isCI) {
-    // Load from environment variables in CI/CD
-    proxies = JSON.parse(process.env.IPS_JSON || "[]");
-    userAgents = JSON.parse(process.env.USER_AGENTS_JSON || "[]");
-  } else {
-    // Load from files locally
-    const ipsPath = path.resolve(__dirname, "ips.json");
-    const userAgentsPath = path.resolve(__dirname, "userAgents.json");
-
-    proxies = JSON.parse(fs.readFileSync(ipsPath, "utf-8"))
-      .proxies as ProxyConfig[];
-    userAgents = JSON.parse(fs.readFileSync(userAgentsPath, "utf-8"))
-      .userAgents as UserAgentConfig[];
+  if (userAgents.length === 0) {
+    const userAgentsFilePath = path.resolve(
+      __dirname,
+      "config/userAgents.json"
+    );
+    const userAgentsFile = fs.readFileSync(userAgentsFilePath, "utf-8");
+    userAgents.push(...JSON.parse(userAgentsFile).userAgents);
   }
 
   return {
     proxies,
     userAgents,
-    proxyCredentials: {
-      username: process.env.PROXY_USERNAME || "",
-      password: process.env.PROXY_PASSWORD || "",
-    },
-    loggerLevel: process.env.LOG_LEVEL || "info",
-    cooldownDuration: parseInt(process.env.COOLDOWN_DURATION || "5000", 10),
-    rotationThreshold: parseInt(process.env.ROTATION_THRESHOLD || "8", 10),
-    maxRetries: parseInt(process.env.MAX_RETRIES || "1", 10),
+    cooldownDuration: Number(process.env.COOLDOWN_DURATION) || 30000,
   };
-};
+}
