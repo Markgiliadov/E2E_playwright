@@ -1,8 +1,8 @@
 node_modules/
 /test-results/
+test-results.json
 /playwright-report/
 /playwright/.cache/
-dist/
 .env
 src/config/ips.json
 src/config/userAgents.json
