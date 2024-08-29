@@ -58,7 +58,6 @@ export class HackerNewsPage {
         username: config.proxyCredentials.username, // Use config here
         password: config.proxyCredentials.password, // Use config here
       },
-      args: ["--foreground"],
     };
 
     const browser =

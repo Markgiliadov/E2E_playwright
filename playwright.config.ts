@@ -17,15 +17,34 @@ export default defineConfig({
   projects: [
     {
       name: "Chromium",
-      use: { ...devices["Desktop Chrome"] }, // Uses desktop Chrome for testing
+      use: {
+        ...devices["Desktop Chrome"],
+        launchOptions: {
+          args: ["--disable-web-security"],
+        },
+      }, // Uses desktop Chrome for testing
     },
     {
       name: "Firefox",
-      use: { ...devices["Desktop Firefox"] }, // Uses desktop Firefox for testing
+      use: {
+        ...devices["Desktop Firefox"],
+
+        launchOptions: {
+          args: ["--disable-web-security"],
+          firefoxUserPrefs: {
+            "accessibility.tabfocus": 7,
+          },
+        },
+      }, // Uses desktop Firefox for testing
     },
     {
       name: "WebKit",
-      use: { ...devices["Desktop Safari"] }, // Uses desktop Safari for testing
+      use: {
+        ...devices["Desktop Safari"],
+        launchOptions: {
+          args: ["--disable-web-security"],
+        },
+      }, // Uses desktop Safari for testing
     },
   ],
 });
